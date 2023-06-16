@@ -51,8 +51,8 @@ echo ======================================================
 echo Do you want to continue? (Y/N)
 set /p UserInput=
 if /i "%UserInput%"=="Y" (
-	git log --oneline --pretty=format:"%%cn committed %%h on %%cd" --no-merges --full-history --oneline --no-notes --branches --source --abbrev-commit --show-linear-break --left-right) 
-	else (
+	git log --oneline --pretty=format:"%%cn committed %%h on %%cd" --no-merges --full-history --oneline --no-notes --branches --source --abbrev-commit --show-linear-break --left-right
+) else (
     goto visualizingCommits
 )
 echo Press any key to continue . . .
