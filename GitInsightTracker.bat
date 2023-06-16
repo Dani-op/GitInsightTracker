@@ -8,28 +8,14 @@ echo.
 
 :commitCount
 echo ======================================================
-echo                  Counting Git Commits:
+echo 	=== ASCII Bar Graph for Commit Counts: ===
 echo ======================================================
 echo Do you want to continue? (Y/N)
 set /p UserInput=
 if /i "%UserInput%"=="Y" (
     git shortlog -s -n --all --no-merges
     git shortlog -s -n --all --no-merges > temp.txt
-) else (
-    goto asciiGraph
-)
-echo Press any key to continue . . .
-pause >nul
-
-:asciiGraph
-echo.
-echo ======================================================
-echo 	=== ASCII Bar Graph for Commit Counts: ===
-echo ======================================================
-echo Do you want to continue? (Y/N)
-set /p UserInput=
-if /i "%UserInput%"=="Y" (
-    setlocal enabledelayedexpansion
+	setlocal enabledelayedexpansion
     for /f "tokens=1,2" %%a in (temp.txt) do (
         set "bar="
         for /l %%i in (1,1,%%a) do set "bar=!bar!#"
@@ -65,8 +51,8 @@ echo ======================================================
 echo Do you want to continue? (Y/N)
 set /p UserInput=
 if /i "%UserInput%"=="Y" (
-    git log --pretty=format:"%%cn committed %%h on %%cd" --no-merges --full-history --oneline --no-notes --branches --source
-) else (
+	git log --oneline --pretty=format:"%%cn committed %%h on %%cd" --no-merges --full-history --oneline --no-notes --branches --source --abbrev-commit --show-linear-break --left-right) 
+	else (
     goto visualizingCommits
 )
 echo Press any key to continue . . .
@@ -80,7 +66,7 @@ echo ======================================================
 echo Do you want to continue? (Y/N)
 set /p UserInput=
 if /i "%UserInput%"=="Y" (
-    git log --pretty=format:"%%cn committed %%h on %%cd" --no-merges --full-history --oneline --no-notes --branches --source --graph
+    git log --pretty=format:"%%cn committed %%h on %%cd" --no-merges --full-history --oneline --no-notes --branches --source --graph --abbrev-commit
 ) else (
     goto endScript
 )
