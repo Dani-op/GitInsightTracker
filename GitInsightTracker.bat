@@ -1,8 +1,7 @@
 @echo off
 echo.
 echo ======================================================
-echo                  GIT INSIGHTS SCRIPT
-echo 	Developed by Dani-op
+echo       GIT INSIGHTS SCRIPT (Developed by Dani-op)
 echo ======================================================
 echo.
 echo ======================================================
